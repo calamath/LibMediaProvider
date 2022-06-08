@@ -1,3 +1,6 @@
+1.0 r20 (Calamath)
+- Removed references and uses of LibStub completely.
+- Updated API version to 101034 (ESO 8.0.x : High Isle)
 
 1.0 r19 (Calamath)
 - Updated API version to 101033 (ESO 7.3.x : Ascending Tide)
