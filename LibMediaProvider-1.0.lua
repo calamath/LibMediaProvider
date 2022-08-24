@@ -62,7 +62,7 @@ LMP.MediaTable.font["Trajan Pro"]				= "$(TRAJAN_PRO_R_FONT)"		-- "EsoUI/Common/
 LMP.MediaTable.font["Univers 55"]				= "$(UNIVERS55_FONT)"			-- "EsoUI/Common/Fonts/univers55.otf"
 LMP.MediaTable.font["Univers 57"]				= "$(UNIVERS57_FONT)"			-- "EsoUI/Common/Fonts/univers57.otf"
 LMP.MediaTable.font["Univers 67"]				= "$(UNIVERS67_FONT)"			-- "EsoUI/Common/Fonts/univers67.otf"
-LMP.DefaultMedia.font = "Univers 55"
+LMP.DefaultMedia.font = "Univers 57"
 
 -- STATUSBAR
 LMP.MediaTable.statusbar = LMP.MediaTable.statusbar or {}
