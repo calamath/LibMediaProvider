@@ -12,6 +12,6 @@
 #
 # You can read the full terms at https://account.elderscrollsonline.com/add-on-terms
 
-fontstrings.xml
+fontstrings_shared.xml
 backupfont_$(language).xml
 LibMediaProvider-1.0.lua
