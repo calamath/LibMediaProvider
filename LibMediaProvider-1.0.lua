@@ -65,8 +65,103 @@ local predefinedFont = {
 		["Univers 57"]				= "$(UNIVERS57_FONT)", 
 		["Univers 67"]				= "$(UNIVERS67_FONT)", 
 	}, 
+--In unofficial language modes where no unique font presets are defined, use ["vanilla"].
+	["vanilla"] = {
+		["ProseAntique"]			= "EsoUI/Common/Fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "EsoUI/Common/Fonts/Consola.ttf", 
+		["Futura Condensed"]		= "EsoUI/Common/Fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "EsoUI/Common/Fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "EsoUI/Common/Fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "EsoUI/Common/Fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "EsoUI/Common/Fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "EsoUI/Common/Fonts/Univers55.otf", 
+		["Univers 57"]				= "EsoUI/Common/Fonts/Univers57.otf", 
+		["Univers 67"]				= "EsoUI/Common/Fonts/Univers67.otf", 
+	}, 
+--In unofficial language modes where the missing glyphs are supplemented with backup fonts, use ["unofficial_language_base"].
+	["unofficial_language_base"] = {
+		["ProseAntique"]			= "$(PROSE_ANTIQUE_FONT)", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "$(FTN57_FONT)", 
+		["Futura Condensed Bold"]	= "$(FTN87_FONT)", 
+		["Futura Condensed Light"]	= "$(FTN47_FONT)", 
+		["Skyrim Handwritten"]		= "$(HANDWRITTEN_BOLD_FONT)", 
+		["Trajan Pro"]				= "$(TRAJAN_PRO_R_FONT)", 
+		["Univers 55"]				= "$(UNIVERS55_FONT)", 
+		["Univers 57"]				= "$(UNIVERS57CYR_FONT)", 
+		["Univers 67"]				= "$(UNIVERS67CYR_FONT)", 
+	}, 
 }
-LMP.MediaTable.font = predefinedFont["default"]
+--If you prefer to use a dedicated font preset for an unofficial language mode, describe a unique preset table here.
+--However, glyphs specific to these predefined western fonts should be consistent regardless of language mode.
+--If possible, try to make up for missing glyphs in backup font definitions.
+predefinedFont["br"] = {	-- for EsoBR (Portugese)
+		["ProseAntique"]			= "EsoBR/fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "EsoBR/fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "EsoBR/fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "EsoBR/fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "EsoBR/fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "EsoBR/fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "EsoBR/fonts/univers55.otf", 
+		["Univers 57"]				= "EsoBR/fonts/univers57.otf", 
+		["Univers 67"]				= "EsoBR/fonts/univers67.otf", 
+}
+predefinedFont["cs"] = {	-- for Cervanteso (Spanish)
+		["ProseAntique"]			= "fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "fonts/univers55.otf", 
+		["Univers 57"]				= "fonts/univers57.otf", 
+		["Univers 67"]				= "fonts/univers67.otf", 
+}
+predefinedFont["it"] = predefinedFont["vanilla"]	-- for Italian Scrolls Online (Italian)
+predefinedFont["kr"] = {	-- for EsoKR (Korean)
+		["ProseAntique"]			= "EsoKR/fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "EsoKR/fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "EsoKR/fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "EsoKR/fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "EsoKR/fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "EsoKR/fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "EsoKR/fonts/univers55.otf", 
+		["Univers 57"]				= "EsoKR/fonts/univers57.otf", 
+		["Univers 67"]				= "EsoKR/fonts/univers67.otf", 
+}
+predefinedFont["kt"] = predefinedFont["kr"]	-- for EsoKR (Korean)
+predefinedFont["pl"] = {	-- for Skrybowie Tamriel (Polish)
+		["ProseAntique"]			= "fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "fonts/univers55.otf", 
+		["Univers 57"]				= "fonts/univers57.otf", 
+		["Univers 67"]				= "fonts/univers67.otf", 
+}
+predefinedFont["ua"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
+predefinedFont["ut"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
+predefinedFont["zh"] = {	-- for EsoZH (Chinese)
+		["ProseAntique"]			= "EsoZH/fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "EsoZH/fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "EsoZH/fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "EsoZH/fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "EsoZH/fonts/Handwritten_Bold.otf", 
+		["Trajan Pro"]				= "EsoZH/fonts/TrajanPro-Regular.otf", 
+		["Univers 55"]				= "EsoZH/fonts/univers55.otf", 
+		["Univers 57"]				= "EsoZH/fonts/univers57.otf", 
+		["Univers 67"]				= "EsoZH/fonts/univers67.otf", 
+}
+
+--
+LMP.MediaTable.font = predefinedFont[GetCVar("Language.2")] or predefinedFont["default"]
 LMP.MediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.ttf"
 LMP.MediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.ttf"
 LMP.MediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"
