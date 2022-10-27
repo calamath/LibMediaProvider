@@ -1,3 +1,9 @@
+1.0 r21 (Calamath)
+- Added embedded Japanese fonts as predefined fonts.
+- Changed default font from Univers 55 to Univers 57
+- Compatibility and support for unofficial language mod add-ons, EsoBR, Cervanteso, Italian Scrolls Online, EsoKR, Skrybowie Tamriel, EsoUA and EsoZH.
+- Updated API version to 101035 (ESO 8.1.x : Lost Depths)
+
 1.0 r20 (Calamath)
 - Removed references and uses of LibStub completely.
 - Updated API version to 101034 (ESO 8.0.x : High Isle)
