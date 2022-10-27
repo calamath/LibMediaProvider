@@ -1,5 +1,5 @@
 <GuiXml>
-    <!-- Optional backup font settings for Russian language mode. "ru" -->
+    <!-- Optional backup font settings for French language mode. "fr" -->
     <!-- These backup fonts will be used in place of the missing glyphs in the original font -->
     <BackupFont originalFont="$(PROSE_ANTIQUE_FONT)" backupFont="EsoUI/Common/Fonts/ProseAntiquePSMTCyrillic.otf"/>
     <BackupFont originalFont="$(PROSE_ANTIQUE_FONT)" backupFont="EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"/>
