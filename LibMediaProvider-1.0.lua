@@ -67,6 +67,9 @@ local predefinedFont = {
 	}, 
 }
 LMP.MediaTable.font = predefinedFont["default"]
+LMP.MediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.ttf"
+LMP.MediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.ttf"
+LMP.MediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"
 LMP.DefaultMedia.font = "Univers 57"
 
 -- STATUSBAR
