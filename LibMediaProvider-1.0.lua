@@ -165,6 +165,8 @@ LMP.MediaTable.font = predefinedFont[GetCVar("Language.2")] or predefinedFont["d
 LMP.MediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.ttf"
 LMP.MediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.ttf"
 LMP.MediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"
+LMP.MediaTable.font["ZH-StdFont"]	= "EsoUI/Common/Fonts/MYingHeiPRC-W5.otf"
+LMP.MediaTable.font["ZH-MYoyoPRC"]	= "EsoUI/Common/Fonts/MYoyoPRC-Medium.otf"
 LMP.DefaultMedia.font = "Univers 57"
 
 -- STATUSBAR
