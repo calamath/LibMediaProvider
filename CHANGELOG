@@ -1,3 +1,10 @@
+1.0 r22 (Calamath)
+- Simplified Chinese language mode support.
+- Temporarily excluded support for EsoZH.
+- Added embedded Chinese fonts as predefined fonts.
+- Some tweaks to backup font.
+- Updated API version to 101036 (ESO 8.2.x : Firesong)
+
 1.0 r21 (Calamath)
 - Added embedded Japanese fonts as predefined fonts.
 - Changed default font from Univers 55 to Univers 57
