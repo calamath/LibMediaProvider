@@ -1,3 +1,6 @@
+1.0 r24 (Calamath)
+- Fixed an issue where the MediaType table was not bypassed.
+
 1.0 r23 (Calamath)
 - Revamped the add-on framework for future extensions of the add-on API.
 - Addressed a potential vulnerability issue where the internal media table could be overwritten by direct access.

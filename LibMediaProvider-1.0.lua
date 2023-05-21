@@ -304,6 +304,7 @@ function LMP:InitializeAPI()
 	self.external.SetDefault = function(_, mediatype, key)
 		return self:SetDefault(mediatype, key)
 	end
+	self.external.MediaType = self.mediaType
 	self.external.MediaTable = {}	-- Stub for backward compatibility
 	for _, mediaType in pairs(self.mediaType) do
 		self.external.MediaTable[mediaType] = {}	-- No longer used
