@@ -2,55 +2,9 @@
 --LibSharedMedia-3.0 and LibMediaProvider-1.0 are under the LGPL-2.1 license
 
 if LibMediaProvider then d("Warning : 'LibMediaProvider' has always been loaded.") return end
-
-local LMP = {}
-LibMediaProvider = LMP
-
 local cm = CALLBACK_MANAGER
 
-LMP.DefaultMedia = LMP.DefaultMedia or {}
-LMP.MediaList = LMP.MediaList or {}
-LMP.MediaTable = LMP.MediaTable or {}
-if not LMP.MediaType then
-	LMP.MediaType = {
-		BACKGROUND = "background",	-- background textures
-		BORDER = "border",			-- border textures
-		FONT = "font",				-- fonts
-		STATUSBAR = "statusbar",	-- statusbar textures
-		SOUND = "sound",			-- sound files
-	}
-end
-local defaultMedia = LMP.DefaultMedia
-local mediaList = LMP.MediaList
-local mediaTable = LMP.MediaTable
-
---DEFAULT UI MEDIA--
--- BACKGROUND
-LMP.MediaTable.background = LMP.MediaTable.background or {}
---commented out because it still leaves a white texture behind - addons can use alpha to hide the background
---LMP.MediaTable.background["None"]				= ""
-LMP.MediaTable.background["ESO Black"]			= "EsoUI/Art/Miscellaneous/borderedinset_center.dds"
-LMP.MediaTable.background["ESO Chat"]			= "EsoUI/Art/chatwindow/chat_bg_center.dds"
-LMP.MediaTable.background["ESO Gray"]			= "EsoUI/Art/itemtooltip/simpleprogbarbg_center.dds"
-LMP.MediaTable.background["Solid"]				= ""
---LMP.DefaultMedia.background = "None"
-LMP.DefaultMedia.background = "Solid"
-
--- BORDER
-LMP.MediaTable.border = LMP.MediaTable.border or {}
---commented out because it still leaves a white texture behind - addons can use alpha to hide the border
---LMP.MediaTable.border["None"]					= ""
-LMP.MediaTable.border["ESO Gold"]				= "EsoUI/Art/Miscellaneous/borderedinsettransparent_edgefile.dds"
-LMP.MediaTable.border["ESO Chat"]				= "EsoUI/Art/chatwindow/chat_bg_edge.dds"
-LMP.MediaTable.border["ESO Rounded"]			= "EsoUI/Art/miscellaneous/interactkeyframe_edge.dds"
-LMP.MediaTable.border["ESO Blue Highlight"]		= "EsoUI/Art/miscellaneous/textentry_highlight_edge.dds"
-LMP.MediaTable.border["ESO Blue Glow"]			= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_blue64.dds"
-LMP.MediaTable.border["ESO Red Glow"]			= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_red64.dds"
-LMP.MediaTable.border["ESO Red Overlay"]		= "EsoUI/Art/uicombatoverlay/uicombatoverlayedge.dds"
---LMP.DefaultMedia.border = "None"
-LMP.DefaultMedia.border = "ESO Gold"
-
--- FONT
+-- Since version 1.0 release 21, the default ui media for fonts depends on the language mode.
 local predefinedFont = {
 --In official language modes where no unique font presets are defined, use ["default"].
 	["default"] = {
@@ -95,7 +49,7 @@ local predefinedFont = {
 --If you prefer to use a dedicated font preset for an unofficial language mode, describe a unique preset table here.
 --However, glyphs specific to these predefined western fonts should be consistent regardless of language mode.
 --If possible, try to make up for missing glyphs in backup font definitions.
-predefinedFont["br"] = {	-- for EsoBR (Portugese)
+	 predefinedFont["br"] = {	-- for EsoBR (Portugese)
 		["ProseAntique"]			= "EsoBR/fonts/ProseAntiquePSMT.otf", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "EsoBR/fonts/FTN57.otf", 
@@ -106,8 +60,8 @@ predefinedFont["br"] = {	-- for EsoBR (Portugese)
 		["Univers 55"]				= "EsoBR/fonts/univers55.otf", 
 		["Univers 57"]				= "EsoBR/fonts/univers57.otf", 
 		["Univers 67"]				= "EsoBR/fonts/univers67.otf", 
-}
-predefinedFont["cs"] = {	-- for Cervanteso (Spanish)
+	}
+	predefinedFont["cs"] = {	-- for Cervanteso (Spanish)
 		["ProseAntique"]			= "fonts/ProseAntiquePSMT.otf", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "fonts/FTN57.otf", 
@@ -118,9 +72,9 @@ predefinedFont["cs"] = {	-- for Cervanteso (Spanish)
 		["Univers 55"]				= "fonts/univers55.otf", 
 		["Univers 57"]				= "fonts/univers57.otf", 
 		["Univers 67"]				= "fonts/univers67.otf", 
-}
-predefinedFont["it"] = predefinedFont["vanilla"]	-- for Italian Scrolls Online (Italian)
-predefinedFont["kr"] = {	-- for EsoKR (Korean)
+	}
+	predefinedFont["it"] = predefinedFont["vanilla"]	-- for Italian Scrolls Online (Italian)
+	predefinedFont["kr"] = {	-- for EsoKR (Korean)
 		["ProseAntique"]			= "EsoKR/fonts/ProseAntiquePSMT.otf", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "EsoKR/fonts/FTN57.otf", 
@@ -131,9 +85,9 @@ predefinedFont["kr"] = {	-- for EsoKR (Korean)
 		["Univers 55"]				= "EsoKR/fonts/univers55.otf", 
 		["Univers 57"]				= "EsoKR/fonts/univers57.otf", 
 		["Univers 67"]				= "EsoKR/fonts/univers67.otf", 
-}
-predefinedFont["kt"] = predefinedFont["kr"]	-- for EsoKR (Korean)
-predefinedFont["pl"] = {	-- for Skrybowie Tamriel (Polish)
+	}
+	predefinedFont["kt"] = predefinedFont["kr"]	-- for EsoKR (Korean)
+	predefinedFont["pl"] = {	-- for Skrybowie Tamriel (Polish)
 		["ProseAntique"]			= "fonts/ProseAntiquePSMT.otf", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "fonts/FTN57.otf", 
@@ -144,10 +98,10 @@ predefinedFont["pl"] = {	-- for Skrybowie Tamriel (Polish)
 		["Univers 55"]				= "fonts/univers55.otf", 
 		["Univers 57"]				= "fonts/univers57.otf", 
 		["Univers 67"]				= "fonts/univers67.otf", 
-}
-predefinedFont["ua"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
-predefinedFont["ut"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
---predefinedFont["zh"] = {	-- for EsoZH (Chinese)
+	}
+	predefinedFont["ua"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
+	predefinedFont["ut"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
+--	predefinedFont["zh"] = {	-- for EsoZH (Chinese)
 --		["ProseAntique"]			= "EsoZH/fonts/ProseAntiquePSMT.otf", 
 --		["Consolas"]				= "$(CONSOLAS_FONT)", 
 --		["Futura Condensed"]		= "EsoZH/fonts/FTN57.otf", 
@@ -158,108 +112,207 @@ predefinedFont["ut"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
 --		["Univers 55"]				= "EsoZH/fonts/univers55.otf", 
 --		["Univers 57"]				= "EsoZH/fonts/univers57.otf", 
 --		["Univers 67"]				= "EsoZH/fonts/univers67.otf", 
---}
+--	}
 
---
-LMP.MediaTable.font = predefinedFont[GetCVar("Language.2")] or predefinedFont["default"]
-LMP.MediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.ttf"
-LMP.MediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.ttf"
-LMP.MediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"
-LMP.MediaTable.font["ZH-StdFont"]	= "EsoUI/Common/Fonts/MYingHeiPRC-W5.otf"
-LMP.MediaTable.font["ZH-MYoyoPRC"]	= "EsoUI/Common/Fonts/MYoyoPRC-Medium.otf"
-LMP.DefaultMedia.font = "Univers 57"
+-- ---------------------------------------------------------------------------------------
+-- LibMediaProvider Class
+-- ---------------------------------------------------------------------------------------
+local LMP = ZO_InitializingObject:Subclass()
+function LMP:Initialize(language)
+	self.name = "LibMediaProvider"
+	self.lang = language or GetCVar("Language.2")
+	self.external = {}
+	self.defaultMedia = {}
+	self.mediaList = {}
+	self.mediaTable = {}
+	self.sharedMediaTable = {}		-- duplicated mediaTable for sharing
+	self.mediaType = {
+		BACKGROUND = "background",	-- background textures
+		BORDER = "border",			-- border textures
+		FONT = "font",				-- fonts
+		STATUSBAR = "statusbar",	-- statusbar textures
+		SOUND = "sound",			-- sound files
+	}
+
+--DEFAULT UI MEDIA--
+-- BACKGROUND
+	self.mediaTable.background = {
+--		["None"]				= "", --commented out because it still leaves a white texture behind - addons can use alpha to hide the background
+		["ESO Black"]			= "EsoUI/Art/Miscellaneous/borderedinset_center.dds", 
+		["ESO Chat"]			= "EsoUI/Art/chatwindow/chat_bg_center.dds", 
+		["ESO Gray"]			= "EsoUI/Art/itemtooltip/simpleprogbarbg_center.dds", 
+		["Solid"]				= "", 
+	}
+	self.defaultMedia.background = "Solid"
+
+-- BORDER
+	self.mediaTable.border = {
+--		["None"]				= "", --commented out because it still leaves a white texture behind - addons can use alpha to hide the border
+		["ESO Gold"]			= "EsoUI/Art/Miscellaneous/borderedinsettransparent_edgefile.dds", 
+		["ESO Chat"]			= "EsoUI/Art/chatwindow/chat_bg_edge.dds", 
+		["ESO Rounded"]			= "EsoUI/Art/miscellaneous/interactkeyframe_edge.dds", 
+		["ESO Blue Highlight"]	= "EsoUI/Art/miscellaneous/textentry_highlight_edge.dds", 
+		["ESO Blue Glow"]		= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_blue64.dds", 
+		["ESO Red Glow"]		= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_red64.dds", 
+		["ESO Red Overlay"]		= "EsoUI/Art/uicombatoverlay/uicombatoverlayedge.dds", 
+	}
+	self.defaultMedia.border = "ESO Gold"
+
+-- FONT
+	self.mediaTable.font = predefinedFont[self.lang] or predefinedFont["default"]
+	self.mediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.ttf"
+	self.mediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.ttf"
+	self.mediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.ttf"
+	self.mediaTable.font["ZH-StdFont"]	= "EsoUI/Common/Fonts/MYingHeiPRC-W5.otf"
+	self.mediaTable.font["ZH-MYoyoPRC"]	= "EsoUI/Common/Fonts/MYoyoPRC-Medium.otf"
+	self.defaultMedia.font = "Univers 57"
 
 -- STATUSBAR
-LMP.MediaTable.statusbar = LMP.MediaTable.statusbar or {}
---LMP.MediaTable.statusbar["ESO Basic"]			= "EsoUI/Art/miscellaneous/progressbar_genericfill_tall.dds"
-LMP.MediaTable.statusbar["ESO Basic"]			= ""
-LMP.DefaultMedia.statusbar = "ESO Basic"
+	self.mediaTable.statusbar = {
+--	self.mediaTable.statusbar["ESO Basic"]			= "EsoUI/Art/miscellaneous/progressbar_genericfill_tall.dds"
+		["ESO Basic"]			= "", 
+	}
+	self.defaultMedia.statusbar = "ESO Basic"
 
 -- SOUND
-LMP.MediaTable.sound = LMP.MediaTable.sound or {}
-LMP.MediaTable.sound["None"]					= ""
-LMP.MediaTable.sound["AvA Gate Open"]			= SOUNDS.AVA_GATE_OPENED
-LMP.MediaTable.sound["AvA Gate Close"]			= SOUNDS.AVA_GATE_CLOSED
-LMP.MediaTable.sound["Emperor Coronated"]		= SOUNDS.EMPEROR_CORONATED_DAGGERFALL
-LMP.MediaTable.sound["Level Up"]				= SOUNDS.LEVEL_UP
-LMP.MediaTable.sound["Skill Gained"]			= SOUNDS.SKILL_GAINED
-LMP.MediaTable.sound["Ability Purchased"]		= SOUNDS.ABILITY_SKILL_PURCHASED
-LMP.MediaTable.sound["Book Acquired"]			= SOUNDS.BOOK_ACQUIRED
-LMP.MediaTable.sound["Unlock"]					= SOUNDS.LOCKPICKING_UNLOCKED
-LMP.MediaTable.sound["Enchanting Extract"]		= SOUNDS.ENCHANTING_EXTRACT_START_ANIM
-LMP.MediaTable.sound["Enchanting Create"]		= SOUNDS.ENCHANTING_CREATE_TOOLTIP_GLOW
-LMP.MediaTable.sound["Blacksmith Improve"]		= SOUNDS.BLACKSMITH_IMPROVE_TOOLTIP_GLOW_SUCCESS
-LMP.DefaultMedia.sound = "None"
+	self.mediaTable.sound = {
+		["None"]					= "", 
+		["AvA Gate Open"]			= SOUNDS.AVA_GATE_OPENED, 
+		["AvA Gate Close"]			= SOUNDS.AVA_GATE_CLOSED, 
+		["Emperor Coronated"]		= SOUNDS.EMPEROR_CORONATED_DAGGERFALL, 
+		["Level Up"]				= SOUNDS.LEVEL_UP, 
+		["Skill Gained"]			= SOUNDS.SKILL_GAINED, 
+		["Ability Purchased"]		= SOUNDS.ABILITY_SKILL_PURCHASED, 
+		["Book Acquired"]			= SOUNDS.BOOK_ACQUIRED, 
+		["Unlock"]					= SOUNDS.LOCKPICKING_UNLOCKED, 
+		["Enchanting Extract"]		= SOUNDS.ENCHANTING_EXTRACT_START_ANIM, 
+		["Enchanting Create"]		= SOUNDS.ENCHANTING_CREATE_TOOLTIP_GLOW, 
+		["Blacksmith Improve"]		= SOUNDS.BLACKSMITH_IMPROVE_TOOLTIP_GLOW_SUCCESS, 
+	}
+	self.defaultMedia.sound = "None"
 
-local function rebuildMediaList(mediatype)
-	local mtable = mediaTable[mediatype]
-	if not mtable then return end
-	if not mediaList[mediatype] then mediaList[mediatype] = {} end
-	local mlist = mediaList[mediatype]
+	-- We do the duplication as the last step in initialization.
+	ZO_DeepTableCopy(self.mediaTable, self.sharedMediaTable)
+	self:InitializeAPI()
+end
+
+function LMP:RebuildMediaList(mediatype)
+	if not self.mediaTable[mediatype] then return end
+	self.mediaList[mediatype] = self.mediaList[mediatype] or {}
+	local mlist = self.mediaList[mediatype]
 	-- list can only get larger, so simply overwrite it
 	local i = 0
-	for k in pairs(mtable) do
+	for k in pairs(self.mediaTable[mediatype]) do
 		i = i + 1
 		mlist[i] = k
 	end
 	table.sort(mlist)
 end
 
+function LMP:Validate(mediatype, key)
+	local mtt = self.mediaTable[mediatype]
+	local smtt = self.sharedMediaTable[mediatype]
+	if mtt and not smtt then
+		ZO_ShallowTableCopy(mtt, smtt)
+	else
+		if mtt[key] ~= smtt[key] then
+			smtt[key] = mtt[key]
+		end
+	end
+end
+
 function LMP:Register(mediatype, key, data)
 	if type(mediatype) ~= "string" then
-		error(MAJOR..":Register(mediatype, key, data) - mediatype must be string, got "..type(mediatype))
+		error(self.name .. ":Register(mediatype, key, data) - mediatype must be string, got " .. type(mediatype))
 	end
 	if type(key) ~= "string" then
-		error(MAJOR..":Register(mediatype, key, data) - key must be string, got "..type(key))
+		error(self.name .. ":Register(mediatype, key, data) - key must be string, got " .. type(key))
 	end
 	mediatype = mediatype:lower()
-	if not mediaTable[mediatype] then
-		mediaTable[mediatype] = {}
-	end
+	self.mediaTable[mediatype] = self.mediaTable[mediatype] or {}
+	self.sharedMediaTable[mediatype] = self.sharedMediaTable[mediatype] or {}
 
-	local mtable = mediaTable[mediatype]
-	if mtable[key] then
-		return false
+	if self.mediaTable[mediatype][key] then
+		return false	--  we do not allow overwriting of registered media.
 	end
-	mtable[key] = data
-	rebuildMediaList(mediatype)
+	self.mediaTable[mediatype][key] = data
+	self.sharedMediaTable[mediatype][key] = data
+	self:RebuildMediaList(mediatype)
 	cm:FireCallbacks("LibMediaProvider_Registered", mediatype, key)
 	return true
 end
 
 function LMP:Fetch(mediatype, key)
-	local mtt = mediaTable[mediatype]
-	local result = (mtt and mtt[key]) or (defaultMedia[mediatype] and mtt[defaultMedia[mediatype]])
+	local mtt = self.mediaTable[mediatype]
+	local result = (mtt and mtt[key]) or (self.defaultMedia[mediatype] and mtt[self.defaultMedia[mediatype]])
 	return result ~= "" and result or nil
 end
 
 function LMP:IsValid(mediatype, key)
-	return mediaTable[mediatype] and (not key or mediaTable[mediatype][key]) and true or false
+	return self.mediaTable[mediatype] and (not key or self.mediaTable[mediatype][key]) and true or false
 end
 
 function LMP:HashTable(mediatype)
-	return mediaTable[mediatype]
+	return self.sharedMediaTable[mediatype]
 end
 
 function LMP:List(mediatype)
-	if not mediaTable[mediatype] then
+	if not self.mediaTable[mediatype] then
 		return nil
 	end
-	if not mediaList[mediatype] then
-		rebuildMediaList(mediatype)
+	if not self.mediaList[mediatype] then
+		self:RebuildMediaList(mediatype)
 	end
-	return mediaList[mediatype]
+	return self.mediaList[mediatype]
 end
 
 function LMP:GetDefault(mediatype)
-	return defaultMedia[mediatype]
+	return self.defaultMedia[mediatype]
 end
 
 function LMP:SetDefault(mediatype, key)
-	if mediaTable[mediatype] and mediaTable[mediatype][key] and not defaultMedia[mediatype] then
-		defaultMedia[mediatype] = key
+	if self.mediaTable[mediatype] and self.mediaTable[mediatype][key] and not self.defaultMedia[mediatype] then
+		self.defaultMedia[mediatype] = key
 		return true
 	else
 		return false
 	end
 end
+
+function LMP:InitializeAPI()
+--
+-- ---- LibMediaProvider-1.0 API
+--
+	self.external.Register = function(_, mediatype, key, data)
+		return self:Register(mediatype, key, data)
+	end
+	self.external.Fetch = function(_, mediatype, key)
+		return self:Fetch(mediatype, key)
+	end
+	self.external.IsValid = function(_, mediatype, key)
+		return self:IsValid(mediatype, key)
+	end
+	self.external.HashTable = function(_, mediatype)
+		return self:HashTable(mediatype)
+	end
+	self.external.List = function(_, mediatype)
+		return self:List(mediatype)
+	end
+	self.external.GetDefault = function(_, mediatype)
+		return self:GetDefault(mediatype)
+	end
+	self.external.SetDefault = function(_, mediatype, key)
+		return self:SetDefault(mediatype, key)
+	end
+	self.external.MediaTable = {}	-- Stub for backward compatibility
+	for _, mediaType in pairs(self.mediaType) do
+		self.external.MediaTable[mediaType] = {}	-- No longer used
+	end
+	assert(not _G[self.name], self.name .. " is already loaded.")
+	_G[self.name] = self.external
+end
+
+-- -----------------------------------------------------------------------------------------------------------
+-- LibMediaProvider-1.0 Add-on
+-- -----------------------------------------------------------------------------------------------------------
+local LibMediaProviderNamespace = LMP:New(GetCVar("Language.2"))
