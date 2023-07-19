@@ -1,3 +1,6 @@
+1.0 r25 (Calamath)
+- Updated API version to 101039 (ESO 9.1.x : Update 39)
+
 1.0 r24 (Calamath)
 - Fixed an issue where the MediaType table was not bypassed.
 
