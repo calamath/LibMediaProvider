@@ -1,3 +1,7 @@
+1.0 r26 (Calamath)
+- Updated predefined fonts for EsoKR Ver.10.08 or later. (thanks Sharlikran)
+- Added support for TurkishScrollsOnline add-on. (thanks Sharlikran)
+
 1.0 r25 (Calamath)
 - Updated API version to 101039 (ESO 9.1.x : Update 39)
 

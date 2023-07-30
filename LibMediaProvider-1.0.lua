@@ -75,16 +75,16 @@ local predefinedFont = {
 	}
 	predefinedFont["it"] = predefinedFont["vanilla"]	-- for Italian Scrolls Online (Italian)
 	predefinedFont["kr"] = {	-- for EsoKR (Korean)
-		["ProseAntique"]			= "EsoKR/fonts/ProseAntiquePSMT.otf",
-		["Consolas"]				= "$(CONSOLAS_FONT)",
-		["Futura Condensed"]		= "EsoKR/fonts/FTN57.otf",
-		["Futura Condensed Bold"]	= "EsoKR/fonts/FTN87.otf",
-		["Futura Condensed Light"]	= "EsoKR/fonts/FTN47.otf",
-		["Skyrim Handwritten"]		= "$(HANDWRITTEN_BOLD_FONT)",
-		["Trajan Pro"]				= "$(TRAJAN_PRO_R_FONT)",
-		["Univers 55"]				= "EsoKR/fonts/univers55.otf",
-		["Univers 57"]				= "EsoKR/fonts/univers57.otf",
-		["Univers 67"]				= "EsoKR/fonts/univers47.otf",	-- Not a typo
+		["ProseAntique"]			= "EsoKR/fonts/ProseAntiquePSMT.otf", 
+		["Consolas"]				= "$(CONSOLAS_FONT)", 
+		["Futura Condensed"]		= "EsoKR/fonts/FTN57.otf", 
+		["Futura Condensed Bold"]	= "EsoKR/fonts/FTN87.otf", 
+		["Futura Condensed Light"]	= "EsoKR/fonts/FTN47.otf", 
+		["Skyrim Handwritten"]		= "$(HANDWRITTEN_BOLD_FONT)", 
+		["Trajan Pro"]				= "$(TRAJAN_PRO_R_FONT)", 
+		["Univers 55"]				= "EsoKR/fonts/univers55.otf", 
+		["Univers 57"]				= "EsoKR/fonts/univers57.otf", 
+		["Univers 67"]				= "EsoKR/fonts/univers47.otf", 	-- Not a typo
 	}
 	predefinedFont["kb"] = predefinedFont["kr"]	-- for EsoKR (Korean)
 	predefinedFont["pl"] = {	-- for Skrybowie Tamriel (Polish)
