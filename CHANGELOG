@@ -1,3 +1,6 @@
+1.0 r28 (Calamath)
+- Advance preparation for new text rendering system on PTS and guaranteed backward compatibility.
+
 1.0 r27 (Calamath)
 - Updated API version to 101040 (ESO 9.2.x : Update 40)
 
