@@ -1,3 +1,9 @@
+1.0 r29 (Calamath)
+- Migration to the new UI font rendering system with Slug fonts.
+- Restored the file structure and removed backward compatibility to Update 40.
+- Adjusted predefined font definitions for the unofficial language mod add-ons, EsoBR, Cervanteso, EsoKR and EsoPL.
+- Updated API version to 101041 (ESO 9.3.x : Update 41)
+
 1.0 r28 (Calamath)
 - Advance preparation for new text rendering system on PTS and guaranteed backward compatibility.
 

@@ -10,7 +10,7 @@ This library facilitates the sharing of media (fonts, textures, etc) between add
     - The "None" option for borders/backgrounds was removed, as ESO displays a white default texture if no file path is provided. Addons should handle hiding borders/backgrounds on their own through the alpha channel.
     - ESO currently does not support addon custom sounds to the game. Some sounds from the default UI have been provided as choices for your addons to use.
     - Label:SetFont("font") may be used with more than just a pre-defined font from the default UI. It may also take a string that is a combination of a file path, font size, and font style.
-    - Ex: label:SetFont("MyAddon/Font/path.ttf|18|soft-shadow-thin")
+    - Ex: label:SetFont("MyAddon/Font/path.slug|18|soft-shadow-thin")
     - There is currently only one statusbar texture in the game. If you wish to have access to more, they must be provided and registered by an addon.
     - Currently supported media types: background, border, font, statusbar, sound
 
