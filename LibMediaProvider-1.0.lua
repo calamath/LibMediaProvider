@@ -128,11 +128,11 @@ function LMP:Initialize(language)
 
 -- FONT
 	self.mediaTable.font = predefinedFont[self.lang] or predefinedFont["default"]
-	self.mediaTable.font["JP-StdFont"]	= "EsoUI/Common/Fonts/ESO_FWNTLGUDC70-DB.slug"
-	self.mediaTable.font["JP-ChatFont"]	= "EsoUI/Common/Fonts/ESO_FWUDC_70-M.slug"
-	self.mediaTable.font["JP-KafuPenji"]	= "EsoUI/Common/Fonts/ESO_KafuPenji-M.slug"
-	self.mediaTable.font["ZH-StdFont"]	= "EsoUI/Common/Fonts/MYingHeiPRC-W5.slug"
-	self.mediaTable.font["ZH-MYoyoPRC"]	= "EsoUI/Common/Fonts/MYoyoPRC-Medium.slug"
+	self.mediaTable.font["JP-StdFont"]		= "$(LMP_FONT_PATH)ESO_FWNTLGUDC70-DB.slug"
+	self.mediaTable.font["JP-ChatFont"]		= "$(LMP_FONT_PATH)ESO_FWUDC_70-M.slug"
+	self.mediaTable.font["JP-KafuPenji"]	= "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
+	self.mediaTable.font["ZH-StdFont"]		= "$(LMP_FONT_PATH)MYingHeiPRC-W5.slug"
+	self.mediaTable.font["ZH-MYoyoPRC"]		= "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
 	self.defaultMedia.font = "Univers 57"
 
 -- STATUSBAR

@@ -1,3 +1,7 @@
+1.0 r30 (Calamath)
+- Addressed an unintended side-effects on vanilla font strings for lore books in western language modes due to the current natures of backup fonts.
+- Updated API version to 101042 (ESO 10.0.x : Gold Road)
+
 1.0 r29 (Calamath)
 - Migration to the new UI font rendering system with Slug fonts.
 - Restored the file structure and removed backward compatibility to Update 40.
