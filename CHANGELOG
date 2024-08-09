@@ -1,3 +1,6 @@
+1.0 r31 (Calamath)
+- Updated API version to 101043 (ESO 10.1.x : Update 43)
+
 1.0 r30 (Calamath)
 - Addressed an unintended side-effects on vanilla font strings for lore books in western language modes due to the current natures of backup fonts.
 - Updated API version to 101042 (ESO 10.0.x : Gold Road)
