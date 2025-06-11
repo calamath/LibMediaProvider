@@ -1,4 +1,4 @@
-# LibMediaProvider-1.0 [![Current Release](https://img.shields.io/github/release/calamath/LibMediaProvider-1.0.svg)](https://github.com/calamath/LibMediaProvider-1.0/releases) [![GitHub license](https://img.shields.io/github/license/calamath/LibMediaProvider-1.0.svg)](https://github.com/calamath/LibMediaProvider-1.0/blob/master/LICENSE)
+# LibMediaProvider-1.1 [![Current Release](https://img.shields.io/github/release/calamath/LibMediaProvider.svg)](https://github.com/calamath/LibMediaProvider/releases) [![GitHub license](https://img.shields.io/github/license/calamath/LibMediaProvider.svg)](https://github.com/calamath/LibMediaProvider/blob/master/LICENSE)
 
 LibMediaProvider is inspired by and borrows from LibSharedMedia-3.0, written for World of Warcraft.
 

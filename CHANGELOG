@@ -1,3 +1,14 @@
+1.1 r34 (Calamath)
+- Changed add-on name to LibMediaProvider.
+- Overhaul to support console machines.
+- Compatibility and support for EsoTH add-on.
+- Updated API version to 101046 (ESO 11.0.x : Seasons of the Worm Cult Part 1)
+
+[Console version]
+- CJK characters no longer display in the predefined Western book fonts.
+- Predefined CJK book fonts are automatically replaced with ESOUI fallback font.
+
+
 1.0 r33 (Calamath)
 - Updated API version to 101045 (ESO 10.3.x : Fallen Banners)
 

@@ -1,6 +1,5 @@
 <GuiXml>
     <!-- common font string defintions for all language modes. -->
-    <String name="LMP_FONT_PATH" value="Esoui/Common/Fonts/" />
     <String name="PROSE_ANTIQUE_FONT" value="$(LMP_FONT_PATH)ProseAntiquePSMT.slug" />
     <String name="CONSOLAS_FONT" value="$(LMP_FONT_PATH)consola.slug" />
     <String name="FTN47_FONT" value="$(LMP_FONT_PATH)FTN47.slug" />

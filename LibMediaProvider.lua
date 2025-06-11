@@ -1,5 +1,5 @@
---LibMediaProvider-1.0 is inspired by and borrows from LibSharedMedia-3.0 for World of Warcraft by Elkano
---LibSharedMedia-3.0 and LibMediaProvider-1.0 are under the LGPL-2.1 license
+--LibMediaProvider is inspired by and borrows from LibSharedMedia-3.0 for World of Warcraft by Elkano
+--LibSharedMedia-3.0 and LibMediaProvider are under the LGPL-2.1 license
 
 if LibMediaProvider then d("Warning : 'LibMediaProvider' has always been loaded.") return end
 local cm = CALLBACK_MANAGER
@@ -7,6 +7,7 @@ local cm = CALLBACK_MANAGER
 -- Since version 1.0 release 21, the default ui media for fonts depends on the language mode.
 local predefinedFont = {
 --In official language modes where no unique font presets are defined, use ["default"].
+--In unofficial language modes where custom backup fonts are defined, use ["default"].
 	["default"] = {
 		["ProseAntique"]			= "$(PROSE_ANTIQUE_FONT)", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
@@ -32,27 +33,13 @@ local predefinedFont = {
 		["Univers 57"]				= "EsoUI/Common/Fonts/Univers57.slug", 
 		["Univers 67"]				= "EsoUI/Common/Fonts/Univers67.slug", 
 	}, 
---In unofficial language modes where the missing glyphs are supplemented with backup fonts, use ["unofficial_language_base"].
-	["unofficial_language_base"] = {
-		["ProseAntique"]			= "$(PROSE_ANTIQUE_FONT)", 
-		["Consolas"]				= "$(CONSOLAS_FONT)", 
-		["Futura Condensed"]		= "$(FTN57_FONT)", 
-		["Futura Condensed Bold"]	= "$(FTN87_FONT)", 
-		["Futura Condensed Light"]	= "$(FTN47_FONT)", 
-		["Skyrim Handwritten"]		= "$(HANDWRITTEN_BOLD_FONT)", 
-		["Trajan Pro"]				= "$(TRAJAN_PRO_R_FONT)", 
-		["Univers 55"]				= "$(UNIVERS55_FONT)", 
-		["Univers 57"]				= "$(UNIVERS57CYR_FONT)", 
-		["Univers 67"]				= "$(UNIVERS67CYR_FONT)", 
-	}, 
 }
 --If you prefer to use a dedicated font preset for an unofficial language mode, describe a unique preset table here.
 --However, glyphs specific to these predefined western fonts should be consistent regardless of language mode.
---If possible, try to make up for missing glyphs in backup font definitions.
-	predefinedFont["br"] = predefinedFont["vanilla"]	-- for EsoBR (Portugese)
-	predefinedFont["cs"] = predefinedFont["vanilla"]	-- for Cervanteso (Spanish)
-	predefinedFont["it"] = predefinedFont["vanilla"]	-- for Italian Scrolls Online (Italian)
-	predefinedFont["kr"] = {	-- for EsoKR (Korean)
+--If possible, please try to make up for missing glyphs in backup font definitions.  backupfont_$(language).xml
+local lang = GetCVar("Language.2")
+if lang == "kr" or lang == "kb" then
+	predefinedFont[lang] = {	-- for EsoKR (Korean)
 		["ProseAntique"]			= "EsoKR/fonts/ProseAntiquePSMT.slug", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "EsoKR/fonts/FTN57.slug", 
@@ -64,8 +51,8 @@ local predefinedFont = {
 		["Univers 57"]				= "EsoKR/fonts/univers57.slug", 
 		["Univers 67"]				= "EsoKR/fonts/univers47.slug", 	-- Not a typo
 	}
-	predefinedFont["kb"] = predefinedFont["kr"]	-- for EsoKR (Korean)
-	predefinedFont["pl"] = {	-- for EsoPL (Polish)
+elseif lang == "pl" then
+	predefinedFont[lang] = {	-- for EsoPL (Polish)
 		["ProseAntique"]			= "fonts/ProseAntiquePSMT.slug", 
 		["Consolas"]				= "$(CONSOLAS_FONT)", 
 		["Futura Condensed"]		= "fonts/FTN57.slug", 
@@ -77,18 +64,17 @@ local predefinedFont = {
 		["Univers 57"]				= "fonts/univers57.slug", 
 		["Univers 67"]				= "fonts/univers67.slug", 
 	}
-	predefinedFont["ua"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
-	predefinedFont["ut"] = predefinedFont["vanilla"]	-- for EsoUA (Ukranian)
-	predefinedFont["tr"] = predefinedFont["vanilla"]	-- for TurkishScrollsOnline (Turkish)
-	predefinedFont["tb"] = predefinedFont["vanilla"]	-- for TurkishScrollsOnline (Turkish)
+elseif lang == "th" then
+	predefinedFont[lang] = predefinedFont["default"]	-- for EsoTH (Thai)
+end
 
 -- ---------------------------------------------------------------------------------------
 -- LibMediaProvider Class
 -- ---------------------------------------------------------------------------------------
 local LMP = ZO_InitializingObject:Subclass()
-function LMP:Initialize(language)
+function LMP:Initialize()
 	self.name = "LibMediaProvider"
-	self.lang = language or GetCVar("Language.2")
+	self.lang = GetCVar("Language.2")
 	self.external = {}
 	self.defaultMedia = {}
 	self.mediaList = {}
@@ -127,12 +113,12 @@ function LMP:Initialize(language)
 	self.defaultMedia.border = "ESO Gold"
 
 -- FONT
-	self.mediaTable.font = predefinedFont[self.lang] or predefinedFont["default"]
+	self.mediaTable.font = ZoGetOfficialGameLanguageDescriptor() == self.lang and predefinedFont["default"] or predefinedFont[self.lang] or predefinedFont["vanilla"]
 	self.mediaTable.font["JP-StdFont"]		= "$(LMP_FONT_PATH)ESO_FWNTLGUDC70-DB.slug"
 	self.mediaTable.font["JP-ChatFont"]		= "$(LMP_FONT_PATH)ESO_FWUDC_70-M.slug"
-	self.mediaTable.font["JP-KafuPenji"]	= "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
+	self.mediaTable.font["JP-KafuPenji"]	= IsConsoleUI() and "UNAVAILABLE" or "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
 	self.mediaTable.font["ZH-StdFont"]		= "$(LMP_FONT_PATH)MYingHeiPRC-W5.slug"
-	self.mediaTable.font["ZH-MYoyoPRC"]		= "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
+	self.mediaTable.font["ZH-MYoyoPRC"]		= IsConsoleUI() and "UNAVAILABLE" or "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
 	self.defaultMedia.font = "Univers 57"
 
 -- STATUSBAR
@@ -249,7 +235,7 @@ end
 
 function LMP:InitializeAPI()
 --
--- ---- LibMediaProvider-1.0 API
+-- ---- LibMediaProvider API
 --
 	self.external.Register = function(_, mediatype, key, data)
 		return self:Register(mediatype, key, data)
@@ -282,6 +268,6 @@ function LMP:InitializeAPI()
 end
 
 -- -----------------------------------------------------------------------------------------------------------
--- LibMediaProvider-1.0 Add-on
+-- LibMediaProvider Add-on
 -- -----------------------------------------------------------------------------------------------------------
-local LibMediaProviderNamespace = LMP:New(GetCVar("Language.2"))
+local LibMediaProviderNamespace = LMP:New()
