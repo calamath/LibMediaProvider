@@ -92,9 +92,9 @@ function LMP:Initialize()
 -- BACKGROUND
 	self.mediaTable.background = {
 --		["None"]				= "", --commented out because it still leaves a white texture behind - addons can use alpha to hide the background
-		["ESO Black"]			= "EsoUI/Art/Miscellaneous/borderedinset_center.dds", 
-		["ESO Chat"]			= "EsoUI/Art/chatwindow/chat_bg_center.dds", 
-		["ESO Gray"]			= "EsoUI/Art/itemtooltip/simpleprogbarbg_center.dds", 
+		["ESO Black"]			= "EsoUI/Art/Miscellaneous/borderedInset_center.dds", 
+		["ESO Chat"]			= "EsoUI/Art/ChatWindow/chat_BG_center.dds", 
+		["ESO Gray"]			= "EsoUI/Art/ItemToolTip/simpleProgbarBG_center.dds", 
 		["Solid"]				= "", 
 	}
 	self.defaultMedia.background = "Solid"
@@ -102,23 +102,25 @@ function LMP:Initialize()
 -- BORDER
 	self.mediaTable.border = {
 --		["None"]				= "", --commented out because it still leaves a white texture behind - addons can use alpha to hide the border
-		["ESO Gold"]			= "EsoUI/Art/Miscellaneous/borderedinsettransparent_edgefile.dds", 
-		["ESO Chat"]			= "EsoUI/Art/chatwindow/chat_bg_edge.dds", 
-		["ESO Rounded"]			= "EsoUI/Art/miscellaneous/interactkeyframe_edge.dds", 
-		["ESO Blue Highlight"]	= "EsoUI/Art/miscellaneous/textentry_highlight_edge.dds", 
-		["ESO Blue Glow"]		= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_blue64.dds", 
-		["ESO Red Glow"]		= "EsoUI/Art/crafting/crafting_tooltip_glow_edge_red64.dds", 
-		["ESO Red Overlay"]		= "EsoUI/Art/uicombatoverlay/uicombatoverlayedge.dds", 
+		["ESO Gold"]			= "EsoUI/Art/Miscellaneous/borderedInsetTransparent_edgeFile.dds", 
+		["ESO Chat"]			= "EsoUI/Art/ChatWindow/chat_BG_edge.dds", 
+		["ESO Rounded"]			= "EsoUI/Art/Miscellaneous/interactKeyFrame_edge.dds", 
+		["ESO Blue Highlight"]	= "EsoUI/Art/Miscellaneous/textEntry_highlight_edge.dds", 
+		["ESO Blue Glow"]		= "EsoUI/Art/Crafting/crafting_toolTip_glow_edge_blue64.dds", 
+		["ESO Red Glow"]		= "EsoUI/Art/Crafting/crafting_toolTip_glow_edge_red64.dds", 
+		["ESO Red Overlay"]		= "EsoUI/Art/UICombatOverlay/UICombatOverlayEdge.dds", 
 	}
 	self.defaultMedia.border = "ESO Gold"
 
 -- FONT
+	-- [Console Add-on]: For some CJK fonts, we intentionally added the control character ^N to the filename in the console UI.
+	--                   These are currently being replaced with fallback font to avoid memory overflow. You can remove the control characters with zo_strformat.
 	self.mediaTable.font = ZoGetOfficialGameLanguageDescriptor() == self.lang and predefinedFont["default"] or predefinedFont[self.lang] or predefinedFont["vanilla"]
 	self.mediaTable.font["JP-StdFont"]		= "$(LMP_FONT_PATH)ESO_FWNTLGUDC70-DB.slug"
 	self.mediaTable.font["JP-ChatFont"]		= "$(LMP_FONT_PATH)ESO_FWUDC_70-M.slug"
-	self.mediaTable.font["JP-KafuPenji"]	= IsConsoleUI() and "UNAVAILABLE" or "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
+	self.mediaTable.font["JP-KafuPenji"]	= IsConsoleUI() and "$(LMP_FONT_PATH)ESO_KafuPenji-M^N.slug" or "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
 	self.mediaTable.font["ZH-StdFont"]		= "$(LMP_FONT_PATH)MYingHeiPRC-W5.slug"
-	self.mediaTable.font["ZH-MYoyoPRC"]		= IsConsoleUI() and "UNAVAILABLE" or "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
+	self.mediaTable.font["ZH-MYoyoPRC"]		= IsConsoleUI() and "$(LMP_FONT_PATH)MYoyoPRC-Medium^N.slug" or "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
 	self.defaultMedia.font = "Univers 57"
 
 -- STATUSBAR
