@@ -1,3 +1,10 @@
+1.1 r36 (Calamath)
+- Updated API version to 101048 (ESO 11.2.x : Seasons of the Worm Cult Part 2)
+
+[Console version]
+- The failsafe for some built-in CJK fonts now works as intended.
+
+
 1.1 r35 (Calamath)
 - Updated API version to 101047 (ESO 11.1.x : Feast of Shadows)
 

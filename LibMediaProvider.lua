@@ -87,6 +87,7 @@ function LMP:Initialize()
 		STATUSBAR = "statusbar",	-- statusbar textures
 		SOUND = "sound",			-- sound files
 	}
+	self.blacklistedFont = {}		-- blacklisted fonts on consoles
 
 --DEFAULT UI MEDIA--
 -- BACKGROUND
@@ -113,15 +114,20 @@ function LMP:Initialize()
 	self.defaultMedia.border = "ESO Gold"
 
 -- FONT
-	-- [Console Add-on]: For some CJK fonts, we intentionally added the control character ^N to the filename in the console UI.
-	--                   These are currently being replaced with fallback font to avoid memory overflow. You can remove the control characters with zo_strformat.
 	self.mediaTable.font = ZoGetOfficialGameLanguageDescriptor() == self.lang and predefinedFont["default"] or predefinedFont[self.lang] or predefinedFont["vanilla"]
 	self.mediaTable.font["JP-StdFont"]		= "$(LMP_FONT_PATH)ESO_FWNTLGUDC70-DB.slug"
 	self.mediaTable.font["JP-ChatFont"]		= "$(LMP_FONT_PATH)ESO_FWUDC_70-M.slug"
-	self.mediaTable.font["JP-KafuPenji"]	= IsConsoleUI() and "$(LMP_FONT_PATH)ESO_KafuPenji-M^N.slug" or "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
+	self.mediaTable.font["JP-KafuPenji"]	= "$(LMP_FONT_PATH)ESO_KafuPenji-M.slug"
 	self.mediaTable.font["ZH-StdFont"]		= "$(LMP_FONT_PATH)MYingHeiPRC-W5.slug"
-	self.mediaTable.font["ZH-MYoyoPRC"]		= IsConsoleUI() and "$(LMP_FONT_PATH)MYoyoPRC-Medium^N.slug" or "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
+	self.mediaTable.font["ZH-MYoyoPRC"]		= "$(LMP_FONT_PATH)MYoyoPRC-Medium.slug"
 	self.defaultMedia.font = "Univers 57"
+
+	-- [Console Add-on]: For some built-in CJK fonts, we intentionally added as a blacklisted font to avoid memory overflow.
+	--                   These will be replaced with the fallback font when fetching. You can use the HashTable method to find the true registered font filename.
+	if IsConsoleUI() then
+		self.blacklistedFont["JP-KafuPenji"] = true
+		self.blacklistedFont["ZH-MYoyoPRC"] = true
+	end
 
 -- STATUSBAR
 	self.mediaTable.statusbar = {
@@ -200,11 +206,17 @@ end
 
 function LMP:Fetch(mediatype, key)
 	local mtt = self.mediaTable[mediatype]
+	if IsConsoleUI() and mediatype == self.mediaType.FONT and self.blacklistedFont[key] then
+		return "$(MEDIUM_FONT)"		-- On consoles, blacklisted fonts should be replaced with the fallback font.
+	end
 	local result = (mtt and mtt[key]) or (self.defaultMedia[mediatype] and mtt[self.defaultMedia[mediatype]])
 	return result ~= "" and result or nil
 end
 
 function LMP:IsValid(mediatype, key)
+	if IsConsoleUI() and mediatype == self.mediaType.FONT and self.blacklistedFont[key] then
+		return false	-- On consoles, blacklisted fonts should be false.
+	end
 	return self.mediaTable[mediatype] and (not key or self.mediaTable[mediatype][key]) and true or false
 end
 
