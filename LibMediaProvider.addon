@@ -1,8 +1,8 @@
 ﻿## Title: LibMediaProvider
 ## Author: Seerah, psypanda, ArtOfShred, Calamath
-## Version: 1.1 r36
-## APIVersion: 101047 101048
-## AddOnVersion: 36
+## Version: 1.1 r37
+## APIVersion: 101048 101049
+## AddOnVersion: 37
 ## IsLibrary: true
 ## Description: Facilitates the sharing of media (fonts, textures, etc) between addons.
 
